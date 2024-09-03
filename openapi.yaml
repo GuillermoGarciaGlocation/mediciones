@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: Mediciones
+  description: Esta API proporciona la cantidad de mediciones por hora según la fecha, con opciones para filtrar por departamento, municipio e ISP.
+  version: 1.0.0
+servers:
+  - url: https://us-central1-mintic-dev.cloudfunctions.net
+    description: Servidor de prueba para la función en Google Cloud
+
+paths:
+  /getMeasurements:
+    get:
+      summary: Obtener mediciones por fecha
+      description: Recupera las mediciones para una fecha específica y parámetros de consulta opcionales.
+      parameters:
+        - name: date
+          in: query
+          required: true
+          description: La fecha para la cual recuperar las mediciones en el formato YYYY-MM-DD.
+          schema:
+            type: string
+            format: date
+        - name: department
+          in: query
+          required: false
+          description: Departamento opcional para filtrar los resultados.
+          schema:
+            type: string
+        - name: municipality
+          in: query
+          required: false
+          description: Municipio opcional para filtrar los resultados.
+          schema:
+            type: string
+        - name: isp
+          in: query
+          required: false
+          description: ISP opcional para filtrar los resultados.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Mediciones recuperadas exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    timestamp:
+                      type: string
+                      format: date-time
+                      description: La fecha y hora de la medición
+                    total:
+                      type: integer
+                      description: Número total de mediciones para la fecha y filtros aplicados
+        '400':
+          description: Formato de fecha inválido. Usa YYYY-MM-DD
+        '404':
+          description: No se encontraron mediciones para la fecha dada
+        '500':
+          description: Error interno del servidor
+
+components:
+  schemas:
+    Measurement:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: La fecha y hora de la medición
+        department:
+          type: string
+          description: El departamento asociado con la medición
+        municipality:
+          type: string
+          description: El municipio asociado con la medición
+        isp:
+          type: string
+          description: El ISP asociado con la medición
+        value:
+          type: number
+          format: float
+          description: El valor de la medición
