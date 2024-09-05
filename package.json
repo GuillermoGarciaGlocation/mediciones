@@ -1,0 +1,12 @@
+{
+    "name": "mi-aplicacion",
+    "version": "1.0.0",
+    "description": "myapp",
+    "main": "service.js",
+    "scripts": {
+        "start": "node service.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+  }

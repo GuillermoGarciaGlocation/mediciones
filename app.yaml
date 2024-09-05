@@ -1,0 +1,4 @@
+# application: mediciones
+# version: 1
+runtime: nodejs20
+service: ejemplo-mintic

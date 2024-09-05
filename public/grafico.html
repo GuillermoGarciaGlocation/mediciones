@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de barras por hora</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js"></script>
+    <script defer src="graficoBarras.js"></script>
+    
+</head>
+<body>
+    <div style="width: 70%; margin: auto;">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Formulario de Búsqueda</h2>
+            <div class="form-group">
+                <label for="txtDate">Digite fecha (YYYY-MM-DD):</label>
+                <input type="date" id="txtDate">
+            </div>
+            <div class="form-group">
+                <label for="txtDepartment">Seleccione un departamento:</label>
+                <select id="txtDepartment">
+                    <option>Seleccione un departamento</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txtMunicipality">Seleccione un municipio:</label>
+                <select id="txtMunicipality">
+                    <option>Seleccione un municipio</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txtIsp">Seleccione un ISP:</label>
+                <select id="txtIsp">
+                    <option>Seleccione un ISP</option>
+                </select>
+            </div>
+            <button id="btnBuscar">Buscar</button>
+    </div>
+    <h3>Numero de mediciones por hora</h3><hr>
+    <canvas id="myChart"></canvas>
+</body>
+</html>
